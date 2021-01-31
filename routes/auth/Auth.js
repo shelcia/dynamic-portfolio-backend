@@ -19,6 +19,7 @@ const registerSchema = Joi.object({
   name: Joi.string().min(3).required(),
   email: Joi.string().min(6).required().email(),
   password: Joi.string().min(6).required(),
+  type: Joi.string().required(),
 });
 
 //LOGIN SCHEMA
@@ -43,7 +44,7 @@ router.post("/register", async (req, res) => {
 
   //CREATE TOKENS
 
-  const token = await jwt.sign(
+  const token = jwt.sign(
     { email: req.body.email, type: req.body.type },
     process.env.TOKEN_SECRET
   );
@@ -54,6 +55,7 @@ router.post("/register", async (req, res) => {
     password: hashedPassword,
     type: req.body.type,
     token: token,
+    portfolios: [],
   });
 
   try {
@@ -100,11 +102,14 @@ router.post("/signin", async (req, res) => {
     } else {
       res
         .status(200)
-        .header("auth-token", token)
-        .send({ userId: user._id, name: user.name, token: user.token });
+        .header("auth-token", user.token)
+        .send({
+          status: "200",
+          message: { userId: user._id, name: user.name, token: user.token },
+        });
     }
   } catch (error) {
-    res.status(400).send({ message: error });
+    res.status(200).send({ status: "400", message: "Internal Server Error" });
   }
 });
 

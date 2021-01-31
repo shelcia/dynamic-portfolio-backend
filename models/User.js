@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema({
   },
   activated: {
     type: Boolean,
-    required: true,
     default: false,
   },
   token: {
@@ -33,8 +32,9 @@ const userSchema = new mongoose.Schema({
   type: {
     type: String,
     required: true,
-    max: 10,
-    min: 2,
+  },
+  portfolios: {
+    type: Array,
   },
   date: {
     type: Date,

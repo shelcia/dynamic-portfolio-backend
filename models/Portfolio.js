@@ -28,7 +28,7 @@ const portfolioSchema = new mongoose.Schema({
   socialLinks: {
     type: Array,
   },
-  theme: {
+  color: {
     type: String,
     default: "greenishblue",
   },

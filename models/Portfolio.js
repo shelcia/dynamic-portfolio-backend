@@ -29,7 +29,8 @@ const portfolioSchema = new mongoose.Schema({
     type: Array,
   },
   theme: {
-    style: "text-greenishblue",
+    type: String,
+    default: "greenishblue",
   },
 });
 

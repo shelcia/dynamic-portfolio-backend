@@ -28,6 +28,9 @@ const portfolioSchema = new mongoose.Schema({
   socialLinks: {
     type: Array,
   },
+  theme: {
+    style: "text-greenishblue",
+  },
 });
 
 const Portfolio = mongoose.model("Portfolio", portfolioSchema);

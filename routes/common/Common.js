@@ -4,7 +4,7 @@ const Portfolio = require("../../models/Portfolio");
 
 router.get("/portfolio/:id", async (req, res) => {
   try {
-    const result = await Portfolio.findById(req.params.id);
+    const result = await Portfolio.find({ userID: req.params.id }).exec();
     res.status(200).send({ status: "200", message: result });
   } catch (error) {
     res.status(200).send({ status: "400", message: error });

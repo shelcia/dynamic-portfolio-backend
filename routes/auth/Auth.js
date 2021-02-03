@@ -163,7 +163,7 @@ router.post("/signin", async (req, res) => {
 router.put("/verification/:id", async (req, res) => {
   console.log(req.params.id);
   const decryptedString = cryptr.decrypt(req.params.id);
-  console.log(decryptedString);
+  // console.log(decryptedString);
   try {
     const query = await User.where({ password: decryptedString });
     const activate = await User.findById(query[0]._id).exec();

@@ -7,8 +7,8 @@ const upload = multer({
     fileSize: 10000000, // max file size 10MB = 10000000 bytes
   },
   fileFilter(req, file, cb) {
-    if (!file.originalname.match(/\.(jpeg|jpg|png)$/)) {
-      cb(new Error("Only upload files with jpg or jpeg or png format."));
+    if (!file.originalname.match(/\.(jpeg|jpg|png|pdf)$/)) {
+      cb(new Error("Only upload files with jpg or jpeg or png or pdf format."));
     }
     cb(undefined, true); // continue with upload
   },

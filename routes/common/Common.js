@@ -44,8 +44,10 @@ router.post("/portfolio", async (req, res) => {
   });
 
   try {
-    await newPortfolio.save();
-    res.status(200).send({ status: "200", message: "Portfolio Added" });
+    const port = await newPortfolio.save();
+    res
+      .status(200)
+      .send({ status: "200", message: "Portfolio Added", id: port._id });
   } catch (error) {
     res.status(200).send({ status: "500", message: "Internal Server Error" });
   }

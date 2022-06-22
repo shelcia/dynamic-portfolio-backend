@@ -4,7 +4,10 @@ const Portfolio = require("../../models/Portfolio");
 
 router.get("/portfolios/:id", async (req, res) => {
   try {
-    const result = await Portfolio.find({ userID: req.params.id }).exec();
+    const result = await Portfolio.find({ userID: req.params.id }).select({
+      name: 1,
+      headerTitle: 1,
+    });
     res.status(200).send({ status: "200", message: result });
   } catch (error) {
     res.status(200).send({ status: "400", message: error });
@@ -60,6 +63,15 @@ router.put("/portfolio/:id", handleImageUpload, async (req, res) => {
   try {
     await Portfolio.findByIdAndUpdate(req.params.id, updatedPortfolio);
     res.status(200).send({ status: "200", message: "Portfolio Edited" });
+  } catch (error) {
+    res.status(200).send({ status: "500", message: "Internal Server Error" });
+  }
+});
+
+router.delete("/portfolio/:id", async (req, res) => {
+  try {
+    await Portfolio.findByIdAndDelete(req.params.id);
+    res.status(200).send({ status: "200", message: "Portfolio Deleted" });
   } catch (error) {
     res.status(200).send({ status: "500", message: "Internal Server Error" });
   }

@@ -4,6 +4,9 @@ const portfolioSchema = new mongoose.Schema({
   userID: {
     type: String,
   },
+  template: {
+    type: String,
+  },
   image: {
     type: Buffer,
   },

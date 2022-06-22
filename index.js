@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const dotenv = require("dotenv");
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4050;
 
 //IMPORT ROUTES
 

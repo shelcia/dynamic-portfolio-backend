@@ -58,8 +58,10 @@ router.post("/portfolio", async (req, res) => {
 
 router.put("/portfolio/:id", handleImageUpload, async (req, res) => {
   let updatedPortfolio = req.body;
+  // console.log(req.params);
 
   if (req.file) updatedPortfolio.image = req.file.buffer;
+
   try {
     await Portfolio.findByIdAndUpdate(req.params.id, updatedPortfolio);
     res.status(200).send({ status: "200", message: "Portfolio Edited" });

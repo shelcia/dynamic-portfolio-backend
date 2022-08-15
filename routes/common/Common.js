@@ -44,6 +44,7 @@ router.post("/portfolio", async (req, res) => {
     socialLinks: req.body.socialLinks,
     theme: req.body.theme,
     font: req.body.font,
+    template: req.body.template,
   });
 
   try {

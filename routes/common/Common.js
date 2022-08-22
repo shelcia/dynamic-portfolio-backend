@@ -45,6 +45,7 @@ router.post("/portfolio", async (req, res) => {
     theme: req.body.theme,
     font: req.body.font,
     template: req.body.template,
+    photoLinks: req.body.photoLinks,
   });
 
   try {

@@ -43,6 +43,9 @@ const portfolioSchema = new mongoose.Schema({
   resumeLink: {
     type: String,
   },
+  photoLinks: {
+    type: Array,
+  },
 });
 
 const Portfolio = mongoose.model("Portfolio", portfolioSchema);

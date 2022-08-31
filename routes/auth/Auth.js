@@ -15,6 +15,7 @@ const jwt = require("jsonwebtoken");
 //VALIDATION OF USER INPUTS PREREQUISITES
 
 const Joi = require("joi");
+const emailTemp = require("../../templates/verifyMail");
 
 //AUTHORISATION RELATED API
 
@@ -84,17 +85,12 @@ router.post("/register", async (req, res) => {
           pass: process.env.PASSWORD,
         },
       });
-      const url = `http://localhost:3000/verificationtologin/${encryptedString}`;
+      const url = `https://dynamic--portfolio.vercel.app/verification/${encryptedString}`;
       const mailOptions = {
         from: process.env.EMAIL,
         to: req.body.email,
         subject: `Activation mail for Dynamic Portfolio`,
-        html: `
-        <h4> Vanakkam ${req.body.name} </h4>
-        <p> Click the button below to activate your account </h5>
-        <a href=${url}>
-        <button style="padding: 0.75rem 1.25rem; background-color:green; color:white; border:none"> Activate your account </button>
-        </a>`,
+        html: emailTemp(req.body.name, url),
       };
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {

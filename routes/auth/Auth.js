@@ -74,9 +74,21 @@ router.post("/register", async (req, res) => {
     //THE USER IS ADDED
     else {
       await user.save();
+      res.setHeader("Access-Control-Allow-Credentials", true);
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      // another common pattern
+      // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+      res.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET,OPTIONS,PATCH,DELETE,POST,PUT"
+      );
+      res.setHeader(
+        "Access-Control-Allow-Headers",
+        "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+      );
       res.status(200).send({ status: "200", message: "User Created" });
       const encryptedString = await cryptr.encrypt(hashedPassword);
-      console.log(process.env.EMAIL, process.env.PASSWORD);
+      // console.log(process.env.EMAIL, process.env.PASSWORD);
 
       const transporter = await nodemailer.createTransport({
         service: "gmail",

@@ -97,10 +97,12 @@ router.post("/register", async (req, res) => {
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
           console.log(error);
-          res.status(401).send("error");
+          // res.status(401).send("error");
+          res.status(200).send({ status: "401", message: "Error" });
         } else {
           console.log("Email sent: " + info.response);
-          res.status(200).send("Sent Successfully");
+          // res.status(200).send("Sent Successfully");
+          res.status(200).send({ status: "200", message: "User Created" });
         }
       });
     }

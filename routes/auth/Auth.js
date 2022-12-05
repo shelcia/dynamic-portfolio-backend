@@ -75,7 +75,7 @@ router.post("/register", async (req, res) => {
     else {
       await user.save();
 
-      res.status(200).send({ status: "200", message: "User Created" });
+      // res.status(200).send({ status: "200", message: "User Created" });
 
       const encryptedString = await cryptr.encrypt(hashedPassword);
       // console.log(process.env.EMAIL, process.env.PASSWORD);

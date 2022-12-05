@@ -43,7 +43,10 @@ const portfolioSchema = new mongoose.Schema({
   resumeLink: {
     type: String,
   },
-  rssLink: {
+  behanceRssLink: {
+    type: String,
+  },
+  mediumRssLink: {
     type: String,
   },
   photoLinks: {

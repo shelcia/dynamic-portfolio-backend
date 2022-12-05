@@ -74,19 +74,9 @@ router.post("/register", async (req, res) => {
     //THE USER IS ADDED
     else {
       await user.save();
-      res.setHeader("Access-Control-Allow-Credentials", true);
-      res.setHeader("Access-Control-Allow-Origin", "*");
-      // another common pattern
-      // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
-      res.setHeader(
-        "Access-Control-Allow-Methods",
-        "GET,OPTIONS,PATCH,DELETE,POST,PUT"
-      );
-      res.setHeader(
-        "Access-Control-Allow-Headers",
-        "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-      );
+
       res.status(200).send({ status: "200", message: "User Created" });
+
       const encryptedString = await cryptr.encrypt(hashedPassword);
       // console.log(process.env.EMAIL, process.env.PASSWORD);
 
@@ -97,7 +87,7 @@ router.post("/register", async (req, res) => {
           pass: process.env.PASSWORD,
         },
       });
-      const url = `https://dynamic--portfolio.vercel.app/verification/${encryptedString}`;
+      const url = `https://dynamic-portfolio.netlify.app/verification/${encryptedString}`;
       const mailOptions = {
         from: process.env.EMAIL,
         to: req.body.email,

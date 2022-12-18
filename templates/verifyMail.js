@@ -115,7 +115,7 @@ Glad you are trying out dynamic portfolio. Don't worry I will not do anything wi
           </tr>
           <tr>
             <td style="text-align:center;">
-              <a href="https://www.hira.one/" style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;">&copy; <strong>https://dynamic--portfolio.vercel.app/</strong></a>
+              <a href="https://dynamic--portfolio.vercel.app/" style="font-size:14px; color:rgba(69, 80, 86, 0.7411764705882353); line-height:18px; margin:0 0 0;">&copy; <strong>https://dynamic--portfolio.vercel.app/</strong></a>
             </td>
           </tr>
           <tr>

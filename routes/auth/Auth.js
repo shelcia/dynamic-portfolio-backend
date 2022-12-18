@@ -87,7 +87,7 @@ router.post("/register", async (req, res) => {
           pass: process.env.PASSWORD,
         },
       });
-      const url = `https://dynamic-portfolio.netlify.app/verification/${encryptedString}`;
+      const url = `https://dynamic--portfolio.vercel.app/verification/${encryptedString}`;
       const mailOptions = {
         from: process.env.EMAIL,
         to: req.body.email,

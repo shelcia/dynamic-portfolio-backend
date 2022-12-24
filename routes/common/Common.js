@@ -38,6 +38,7 @@ router.post("/portfolio", async (req, res) => {
     name: req.body.name,
     headerTitle: req.body.headerTitle,
     about: req.body.about,
+    resumeLink: req.body.resumeLink,
     skills: req.body.skills,
     exp: req.body.exp,
     projects: req.body.projects,
